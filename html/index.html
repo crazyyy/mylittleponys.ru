@@ -13,18 +13,12 @@
 	<!-- css + javascript -->
 	<link rel="stylesheet" href="style.css" media="all">
 	<script type="text/javascript" src="js/modernizr.min.js"></script>
-	<script>
-		!function(){
-			// configure legacy, retina, touch requirements @ conditionizr.com
-			conditionizr()
-		}()
-	</script>
 </head>
 <body>
 <!-- wrapper -->
 <div class="wrapper clearfix">
 	<!-- header -->
-	<header class="header inner clearfix" role="banner">
+	<header class="header header-ws inner clearfix" role="banner">
 		<!-- logo -->
 		<div class="logo">
 			<img src="img/logo.png" alt="-" title="-" class="logo-img">
@@ -32,7 +26,12 @@
 		<!-- /logo -->
 		<!-- nav -->
 		<nav class="nav" role="navigation">
-			<div class="menu"></div>
+			<ul class="headnav clearfix">
+				<li><a href="">Главная</a></li>
+				<li><a href="">Игры</a></li>
+				<li><a href="">Мультфильмы</a></li>
+				<li><a href="">Пони</a></li>
+			</ul>
 		</nav>
 		<!-- /nav -->
 	</header>
@@ -41,7 +40,7 @@
 	<div class="container inner">
 		<!-- section -->
 		<section role="main">
-			<h1 class="ctitle">Последние записи</h1>
+			<h1 class="heading heading-new-game ctitle"><span></span>Последние записи</h1>
 			<!-- article -->
 			<article>
 				<h2 class="title">Извините, нечего показывать ;(</h2>
