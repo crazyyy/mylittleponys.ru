@@ -2,9 +2,10 @@
 @import '_wordpress.scss';
 @import '_font_fontawesome.scss';
 @import '_font_opensans.scss';
+@import '_font_neucha.scss';
 
 $width: 980px;
-$footer: 100px;
+$footer: 330px;
 $footer_margin: $footer - 2 * $footer;
 $color: #444;
 $color_a: #000;
@@ -18,9 +19,12 @@ body {
 	background-color: #dbc5f9;
 	background-image: url(../img/bg/body.jpg);
 	background-repeat: no-repeat;
-	background-position: center top;
+	background-position: center -300px;
 	color: $color;
 	font-weight: normal;
+}
+body.home {
+	background-position: center top;
 }
 a {
 	color: $color_a;
@@ -87,12 +91,81 @@ footer {
 	width: 100%;
 	height: $footer;
 	margin: $footer_margin auto 0;
-	background-color: #f16529;
 	.mainfooter {
 		width: $width;
-		height: 100%;
+		height: $footer;
 		margin: 0 auto;
-		background-color: #b3d4fc;
+		background-image: url(../img/bg/footer-body.png);
+		background-position: center top;
+		background-repeat: no-repeat;
+		position: relative;
+		&:before,
+		&:after {
+			content: '';
+			width: 5px;
+			background-repeat: no-repeat;
+			position: absolute;
+			top: 52px;
+		}
+		&:before {
+			height: 20px;
+			left: -5px;
+
+			background-image: url(../img/bg/footer-body-before.png);
+		}
+		&:after {
+			height: 24px;
+			right: -5px;
+			background-image: url(../img/bg/footer-body-after.png);
+		}
+	}
+	.footer-widget {
+		width: 160px;
+		display: block;
+		height: 200px;
+		border-right: 1px solid #ef57a3;
+		position: absolute;
+		top: 85px;
+		h6 {
+			color: #fef200;
+			font-size: 20px;
+			text-align: center;
+			margin: 0 0 30px;
+			font-family: Neucha;
+		}
+		ul {
+			text-align: center;
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			margin: 0 0 16px;
+			a{
+				color: #fff;
+				text-decoration: none;
+			}
+		}
+	}
+	.footer-widget-left {
+		left: 20px;
+	}
+	.footer-widget-middle {
+		left: 181px;
+	}
+	.footer-widget-right {
+		left: 341px;
+	}
+	.copyright {
+		height: 50px;
+		margin: 0 auto;
+		padding: 20px;
+		width: $width;
+		display: block;
+		color: #ffc6e3;
+		font-size: 12px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
 	}
 }
 

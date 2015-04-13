@@ -1,0 +1,8 @@
+$ne-font-path: "../fonts" !default;
+
+@font-face {
+    font-family: 'Neucha';
+    src: url('#{$os-font-path}/Neucha.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
