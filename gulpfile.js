@@ -74,18 +74,17 @@ gulp.task('fonts', function () {
     .pipe(plugins.size({title: 'fonts'}));
 });
 
+
 // Optimize images
-gulp.task('image', function() {
-	return gulp.src(paths.images.src)
-		.pipe(plugins.cache(
-			plugins.imageOptimization({
-				optimizationLevel: 3,
-				progressive: true,
-				interlaced: true
-			})
-		))
-		.pipe(gulp.dest(paths.images.dest))
-		.pipe(plugins.size({showFiles:true}));
+gulp.task('image', function () {
+  return gulp.src(paths.images.src)
+    .pipe(plugins.cache(
+    	plugins.imagemin({
+    		progressive: true,
+    		interlaced: true
+    	})))
+    .pipe(gulp.dest(paths.images.dest))
+    .pipe(plugins.size({title: 'images'}));
 });
 
 gulp.task('sprite', function () {
