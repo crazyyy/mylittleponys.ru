@@ -26,6 +26,7 @@
     "gulp-wait": "0.0.2",
     "gulp-webp": "^2.2.0",
     "gulp.spritesmith": "^3.5.3",
+    "imagemin-pngquant": "^4.0.0",
     "jshint-stylish": "^1.0.1",
     "run-sequence": "^1.0.2"
   },

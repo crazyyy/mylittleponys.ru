@@ -1,0 +1,11 @@
+
+@font-face {
+    font-family: 'neucharegular';
+    src: url('neucha.eot');
+    src: url('neucha.eot?#iefix') format('embedded-opentype'),
+         url('neucha.woff') format('woff'),
+         url('neucha.ttf.gz') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}

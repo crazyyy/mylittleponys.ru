@@ -5,6 +5,7 @@ var gulp        =		require('gulp'),
 	runSequence = 		require('run-sequence'),
 	browserSync = 		require('browser-sync'),
 	reload 		= 		browserSync.reload,
+	pngquant 	= 		require('imagemin-pngquant')
 	plugins     = 		require("gulp-load-plugins")({
 							pattern: ['gulp-*', 'gulp.*'],
 							replaceString: /\bgulp[\-.]/
@@ -74,6 +75,13 @@ gulp.task('fonts', function () {
     .pipe(plugins.size({title: 'fonts'}));
 });
 
+// Temp image cp
+gulp.task('imagecp', function () {
+  return gulp.src(paths.images.src)
+    .pipe(gulp.dest(paths.images.dest))
+    .pipe(plugins.size({title: 'img copy'}));
+});
+
 
 // Optimize images
 gulp.task('image', function () {
@@ -81,7 +89,8 @@ gulp.task('image', function () {
     .pipe(plugins.cache(
     	plugins.imagemin({
     		progressive: true,
-    		interlaced: true
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngquant()]
     	})))
     .pipe(gulp.dest(paths.images.dest))
     .pipe(plugins.size({title: 'images'}));
@@ -163,7 +172,7 @@ gulp.task('clearcache', function () {
 		.pipe(plugins.rimraf());
 });
 
-gulp.task('default', ['image', 'scripts', 'styles', 'fonts'], function () {
+gulp.task('default', ['scripts', 'styles', 'fonts'], function () {
 	if (htmlOWp == true) {
 		browserSync({
 			notify: false,
@@ -191,6 +200,45 @@ gulp.task('default', ['image', 'scripts', 'styles', 'fonts'], function () {
 		paths.fonts.src
 	]).on('change', reload);
 
+	// gulp.watch(paths.images.src, ['image', reload]);
+	gulp.watch(paths.images.src, ['imagecp', reload]);
+	gulp.watch(appFiles.styles, ['styles', reload]);
+	gulp.watch(paths.sprite.src, ['styles', reload]);
+	gulp.watch(paths.fonts.src, ['fonts', reload]);
+	gulp.watch(appFiles.scripts, ['jshint']);
+	gulp.watch(appFiles.scripts, ['scripts', reload]);
+
+});
+
+
+gulp.task('serve', ['image', 'scripts', 'styles', 'fonts'], function () {
+	if (htmlOWp == true) {
+		browserSync({
+			notify: false,
+			port: 9000,
+			server: {
+				baseDir: basePaths.dest,
+			}
+		});
+	}
+	else {
+		browserSync({
+			notify: false,
+	        proxy: wpDomain,
+	        host: wpDomain,
+	        port: 8080
+		});
+	}
+
+	// watch for changes
+	gulp.watch([
+		basePaths.dest + '*.html',
+		basePaths.dest + '*.php',
+		appFiles.scripts,
+		paths.fonts.src
+	]).on('change', reload);
+
+	gulp.watch(paths.images.src, ['image', reload]);
 	gulp.watch(appFiles.styles, ['styles', reload]);
 	gulp.watch(paths.sprite.src, ['styles', reload]);
 	gulp.watch(paths.fonts.src, ['fonts', reload]);

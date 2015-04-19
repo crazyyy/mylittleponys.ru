@@ -1,0 +1,11 @@
+
+@font-face {
+    font-family: 'foo';
+    src: url('foo.eot');
+    src: url('foo.eot?#iefix') format('embedded-opentype'),
+         url('foo.woff') format('woff'),
+         url('foo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
