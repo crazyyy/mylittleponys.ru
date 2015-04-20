@@ -61,7 +61,7 @@ var appFiles = {
 var spriteConfig = {
 		imgName: 'sprite.png',
 		cssName: '_sprite.scss',
-		imgPath: paths.images.dest + 'sprite.png'
+		imgPath: '../img/' + 'sprite.png'
 };
 
 var changeEvent = function(evt) {

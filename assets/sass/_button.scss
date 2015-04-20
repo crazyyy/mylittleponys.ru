@@ -1,0 +1,60 @@
+.butt {
+  font-family: 'Foo';
+  font-size: 16px;
+  line-height: 1.2;
+
+  display: block;
+
+  height: 42px;
+  margin: 0 auto 18px;
+  padding: 12px 40px;
+
+  text-align: center;
+  text-decoration: none;
+  text-indent: 10.3px;
+  text-transform: uppercase;
+
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  text-shadow: 0 1px 1px rgba(54, 25, 96, .004);
+}
+.butt-big {
+  height: 50px;
+  padding: 18px 0 0;
+}
+.butt-midle {
+  width: 160px;
+  margin: 0 auto;
+  padding-right: 0;
+  padding-left: 0;
+}
+.butt-violet {
+  background-image: linear-gradient(to bottom, #b891ef 0%, #7149a8 100%);
+  &:hover {
+    color: #68429d;
+    border-color: #8157bd;
+    background-image: linear-gradient(to bottom, #b88ff1 0%, #8867b6 100%);
+    text-shadow: 0 1px 0 rgba(186, 145, 242, .004);
+  }
+}
+.butt-pink {
+  border-color: #ec50a1;
+  background-image: linear-gradient(to bottom, #fb62b2 0%, #e2348f 100%);
+  &:hover {
+    color: #cd4189;
+    border-color: #f760ab;
+    background-image: linear-gradient(to bottom, #fecbe0 0%, #f068ae 100%);
+    text-shadow: 0 1px 0 rgba(253, 193, 217, .004);
+  }
+}
+.butt-orange {
+  border-color: #ff7b19;
+  background-image: linear-gradient(to bottom, #ffc470 0%, #ff7a17 100%);
+  &:hover {
+    color: #e36002;
+    border-color: #ffa525;
+    background-image: linear-gradient(to bottom, #ffc168 0%, #ff8e39 100%);
+    text-shadow: 0 1px 0 rgba(253, 193, 217, .004);
+  }
+}
