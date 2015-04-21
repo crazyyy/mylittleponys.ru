@@ -596,7 +596,29 @@ section {
       }
     }
   }
+  .share-social-bdrs-bot {
+    border-radius: 0 0 10px 10px;
+  }
 }
+
+.single-game {
+  overflow: hidden;
+
+  width: 920px;
+  height: 525px;
+
+  background-color: #ddd;
+}
+
+.single-video {
+  overflow: hidden;
+
+  width: 920px;
+  height: 515px;
+
+  background-color: #ddd;
+}
+
 .other-pony-list {
   display: block;
 
@@ -836,6 +858,7 @@ section {
     }
   }
 }
+
 .article-gallery {
   position: relative;
 
@@ -972,7 +995,7 @@ section {
   }
 }
 .pagination {
-    width: 100%;
+  width: 100%;
 }
 
 .vk-comments {
