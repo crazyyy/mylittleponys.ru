@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Akismet 3.0\n"
+"Project-Id-Version: Akismet 3.1.1\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-02-19 06:39+0300\n"
+"PO-Revision-Date: 2015-04-20 20:08+0300\n"
 "Last-Translator: Sergey Biryukov <sergeybiryukov.ru@gmail.com>\n"
 "Language-Team: ru.wordpress.org <sergeybiryukov.ru@gmail.com>\n"
 "Language: ru_RU\n"
@@ -13,13 +13,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.7.6\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: S:\\home\\wordpress\\trunk\\wp-content\\plugins\\akismet\n"
 "X-Poedit-SearchPath-0: S:\\home\\wordpress\\trunk\\wp-content\\plugins"
 "\\akismet\n"
 
-#: views/notice.php:96
+#: views/notice.php:90
+msgid "The key you entered could not be verified."
+msgstr "Не удалось проверить введённый ключ."
+
+#: views/notice.php:91
+msgid ""
+"The connection to akismet.com cannot be established. Please refer to <a href="
+"\"%s\" target=\"_blank\">our guide about firewalls</a> and check your server "
+"configuration."
+msgstr ""
+"Отсутствует соединение с akismet.com. Пожалуйста, посмотрите <a href=\"%s\" "
+"target=\"_blank\">нашу инструкцию по настройке файрвола</a> и проверьте "
+"параметры сервера."
+
+#: views/config.php:76
+msgid "SSL Status"
+msgstr "Статус SSL"
+
+#: views/config.php:83 views/config.php:86
+msgid "Disabled."
+msgstr "Отключено."
+
+#: views/config.php:86
+msgid ""
+"Your Web server cannot make SSL requests; contact your Web host and ask them "
+"to add support for SSL requests."
+msgstr ""
+"Ваш сервер не может выполнять SSL-запросы; свяжитесь с вашим хостинг-"
+"провайдером и попросите их добавить поддержку SSL-запросов."
+
+#: views/config.php:92
+msgid "Temporarily disabled."
+msgstr "Временно отключено."
+
+#: views/config.php:92
+msgid ""
+"Akismet encountered a problem with a previous SSL request and disabled it "
+"temporarily. It will begin using SSL for requests again shortly."
+msgstr ""
+"Akismet обнаружил проблему при выполнении предыдущего SSL-запроса и временно "
+"отключил SSL. Через некоторое время Akismet снова будет использовать SSL для "
+"запросов."
+
+#: views/config.php:95
+msgid "Enabled."
+msgstr "Включено."
+
+#: views/config.php:95
+msgid "All systems functional."
+msgstr "Все системы работают."
+
+#: views/notice.php:97
 msgid ""
 "Your Pro subscription allows the use of Akismet on only one site. Please <a "
 "href=\"http://docs.akismet.com/billing/add-more-sites/\">purchase additional "
@@ -34,7 +85,7 @@ msgstr ""
 "количестве сайтов.<br /><br />Если у вас есть вопросы &#8212; пожалуйста, "
 "свяжитесь с нашей службой поддержки."
 
-#: views/config.php:97
+#: views/config.php:127
 msgid ""
 "Spam in the <a href=\"%1$s\">spam folder</a> older than 1 day is deleted "
 "automatically."
@@ -45,10 +96,10 @@ msgstr[0] ""
 "Сообщения в <a href=\"%1$s\">папке спама</a> старше %2$d дня автоматически "
 "удаляются."
 msgstr[1] ""
-"Сообщения в <a href=\"%1$s\">папке спама</a> старше %2$s дней автоматически "
-"удаляются.."
+"Сообщения в <a href=\"%1$s\">папке спама</a> старше %2$d дней автоматически "
+"удаляются."
 msgstr[2] ""
-"Сообщения в <a href=\"%1$s\">папке спама</a> старше %2$s дней автоматически "
+"Сообщения в <a href=\"%1$s\">папке спама</a> старше %2$d дней автоматически "
 "удаляются."
 
 #. Plugin URI of the plugin/theme
@@ -127,23 +178,23 @@ msgstr "Ваша подписка для %s отменена"
 msgid "Reactivate Akismet"
 msgstr "Повторно активировать Akismet"
 
-#: views/config.php:152
+#: views/config.php:182
 msgid "Cancelled"
 msgstr "Подписка отменена"
 
-#: views/config.php:154
+#: views/config.php:184
 msgid "Suspended"
 msgstr "Подписка заморожена"
 
-#: views/config.php:156
+#: views/config.php:186
 msgid "Missing"
 msgstr "Подписка отсутствует"
 
-#: views/config.php:158
+#: views/config.php:188
 msgid "No Subscription Found"
 msgstr "Подписка не найдена"
 
-#: views/config.php:160
+#: views/config.php:190
 msgid "Active"
 msgstr "Подписка активна"
 
@@ -165,7 +216,7 @@ msgstr ""
 "подписки. Если у вас есть вопросы &#8212; пожалуйста, <a href=\"%s\" target="
 "\"_blank\">свяжитесь с нашей службой поддержки</a>."
 
-#: class.akismet-admin.php:196 views/config.php:84
+#: class.akismet-admin.php:196 views/config.php:114
 msgid "Strictness"
 msgstr "Режим"
 
@@ -177,16 +228,16 @@ msgstr ""
 "Выберите, отклонять ли очевидный спам автоматически, или всегда помещать "
 "весь спам в папку спама."
 
-#: views/config.php:88
+#: views/config.php:118
 msgid "Silently discard the worst and most pervasive spam so I never see it."
 msgstr ""
 "Автоматически отклонять очевидный спам, чтобы он не попадался на глаза."
 
-#: views/config.php:89
+#: views/config.php:119
 msgid "Always put spam in the Spam folder for review."
 msgstr "Всегда помещать спам в папку &laquo;Спам&raquo; для просмотра."
 
-#: class.akismet-admin.php:195 views/config.php:75
+#: class.akismet-admin.php:195 views/config.php:105
 msgid "Comments"
 msgstr "Комментарии"
 
@@ -194,7 +245,7 @@ msgstr "Комментарии"
 msgid "Your subscription is missing."
 msgstr "Ваша подписка отсутствует."
 
-#: views/notice.php:95
+#: views/notice.php:96
 msgid ""
 "You're using your Akismet key on more sites than your Pro subscription "
 "allows."
@@ -202,13 +253,13 @@ msgstr ""
 "Вы используете ключ Akismet для большего числа сайтов, чем позволяет ваша "
 "подписка Pro."
 
-#: views/notice.php:98
+#: views/notice.php:99
 msgid "You're using Akismet on far too many sites for your Pro subscription."
 msgstr ""
 "Вы используете ключ Akismet для гораздо большего числа сайтов, чем позволяет "
 "ваша подписка Pro."
 
-#: views/notice.php:99
+#: views/notice.php:100
 msgid ""
 "To continue your service, <a href=\"%s\" target=\"_blank\">upgrade to an "
 "Enterprise subscription</a>, which covers an unlimited number of sites. "
@@ -309,14 +360,6 @@ msgstr "Ваша учётная запись Akismet настроена и ак�
 msgid "The key you entered is invalid. Please double-check it."
 msgstr "Вы ввели неверный ключ. Пожалуйста, проверьте его."
 
-#: views/notice.php:90
-msgid ""
-"The key you entered could not be verified because a connection to akismet."
-"com could not be established. Please check your server configuration."
-msgstr ""
-"Не удалось проверить ключ, поскольку отсутствует соединение с сервером "
-"akismet.com. Проверьте настройки сервера."
-
 #: views/start.php:40 views/start.php:74
 msgid ""
 "Akismet eliminates the comment and trackback spam you get on your site. To "
@@ -383,7 +426,7 @@ msgstr "Без паники! Свяжитесь с нами, и мы помож�
 msgid "Contact Akismet support"
 msgstr "Связаться с поддержкой Akismet"
 
-#: views/config.php:87 views/strict.php:2 views/strict.php:3
+#: views/config.php:117 views/strict.php:2 views/strict.php:3
 msgid "Akismet anti-spam strictness"
 msgstr "Режим защиты Akismet"
 
@@ -523,7 +566,7 @@ msgstr "API-ключ"
 msgid "Enter/remove an API key."
 msgstr "Ввести/удалить API-ключ."
 
-#: views/config.php:79
+#: views/config.php:109
 msgid "Show the number of approved comments beside each comment author"
 msgstr "Отображать количество одобренных комментариев рядом с каждым автором."
 
@@ -535,11 +578,11 @@ msgstr ""
 "Отображать количество одобренных комментариев рядом с каждым автором в "
 "списке комментариев."
 
-#: class.akismet-admin.php:203 views/config.php:135
+#: class.akismet-admin.php:203 views/config.php:165
 msgid "Account"
 msgstr "Учётная запись"
 
-#: class.akismet-admin.php:206 views/config.php:140
+#: class.akismet-admin.php:206 views/config.php:170
 msgid "Subscription Type"
 msgstr "Тип подписки"
 
@@ -547,7 +590,7 @@ msgstr "Тип подписки"
 msgid "The Akismet subscription plan"
 msgstr "План подписки Akismet."
 
-#: class.akismet-admin.php:207 views/config.php:147
+#: class.akismet-admin.php:207 views/config.php:177
 msgid "Status"
 msgstr "Статус"
 
@@ -629,7 +672,7 @@ msgstr "В настоящий момент <a href='%1$s'>очередь спа�
 msgid "Check for Spam"
 msgstr "Проверить на спам"
 
-#: class.akismet.php:442
+#: class.akismet.php:446
 msgid "%1$s changed the comment status to %2$s"
 msgstr "Пользователь %1$s изменил статус комментария на %2$s"
 
@@ -684,11 +727,11 @@ msgstr[2] "%s одобрены"
 msgid "%s ago"
 msgstr "%s назад"
 
-#: class.akismet.php:487
+#: class.akismet.php:491
 msgid "%s reported this comment as spam"
 msgstr "Пользователь %s пометил этот комментарий как спам."
 
-#: class.akismet.php:533
+#: class.akismet.php:537
 msgid "%s reported this comment as not spam"
 msgstr "Пользователь %s пометил этот комментарий как не спам."
 
@@ -741,23 +784,23 @@ msgstr[2] ""
 "<strong>Akismet</strong> заблокировал <strong class=\"count\">%1$s спамеров</"
 "strong>"
 
-#: class.akismet.php:227
+#: class.akismet.php:231
 msgid "Akismet caught this comment as spam"
 msgstr "Akismet пометил этот комментарий как спам"
 
-#: class.akismet.php:229 class.akismet.php:238
+#: class.akismet.php:233 class.akismet.php:242
 msgid "Comment status was changed to %s"
 msgstr "Статус комментария был изменён на %s"
 
-#: class.akismet.php:233
+#: class.akismet.php:237
 msgid "Akismet cleared this comment"
 msgstr "Akismet одобрил этот комментарий"
 
-#: class.akismet.php:236
+#: class.akismet.php:240
 msgid "Comment was caught by wp_blacklist_check"
 msgstr "Комментарий задержан функцией wp_blacklist_check"
 
-#: class.akismet.php:243
+#: class.akismet.php:247
 msgid ""
 "Akismet was unable to check this comment (response: %s), will automatically "
 "retry again later."
@@ -765,19 +808,19 @@ msgstr ""
 "Akismet не смог проверить этот комментарий (ответ: %s), позже будет "
 "предпринята повторная попытка."
 
-#: class.akismet.php:573
+#: class.akismet.php:578
 msgid "Akismet caught this comment as spam during an automatic retry."
 msgstr "Akismet пометил этот комментарий как спам при повторной проверке."
 
-#: class.akismet.php:575
+#: class.akismet.php:580
 msgid "Akismet cleared this comment during an automatic retry."
 msgstr "Akismet одобрил этот комментарий при повторной проверке."
 
-#: class.akismet.php:923
+#: class.akismet.php:991
 msgid "Akismet %s requires WordPress %s or higher."
 msgstr "Akismet %s требует WordPress %s или выше."
 
-#: class.akismet.php:923 views/notice.php:27
+#: class.akismet.php:991 views/notice.php:27
 msgid ""
 "Please <a href=\"%1$s\">upgrade WordPress</a> to a current version, or <a "
 "href=\"%2$s\">downgrade to version 2.4 of the Akismet plugin</a>."
@@ -812,31 +855,31 @@ msgstr[0] "%s пропущенных спам-комментариев, %s ло�
 msgstr[1] "%s пропущенных спам-комментариев, %s ложных срабатывания"
 msgstr[2] "%s пропущенных спам-комментариев, %s ложных срабатываний"
 
-#: views/config.php:79
+#: views/config.php:109
 msgid "Show approved comments"
 msgstr "Показывать одобренные комментарии"
 
-#: views/config.php:91
+#: views/config.php:121
 msgid "Note:"
 msgstr "Примечание:"
 
-#: views/config.php:116
+#: views/config.php:146
 msgid "Disconnect this account"
 msgstr "Отключить эту учётную запись"
 
-#: views/config.php:122
+#: views/config.php:152
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: views/config.php:166
+#: views/config.php:196
 msgid "Next Billing Date"
 msgstr "Дата следующего платежа"
 
-#: views/config.php:178
+#: views/config.php:208
 msgid "Upgrade"
 msgstr "Повысить уровень подписки"
 
-#: views/config.php:178
+#: views/config.php:208
 msgid "Change"
 msgstr "Изменить"
 

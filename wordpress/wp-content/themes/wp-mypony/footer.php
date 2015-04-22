@@ -3,36 +3,36 @@
 
 <!-- footer -->
 <footer class="footer" role="contentinfo">
-    <div class="mainfooter">
-        <div class="footer-widget footer-widget-left">
-            <h6>Игры</h6>
-            <ul>
-                <?php wpeFootNav(); ?>
-            </ul>
-        </div><!-- footer-widget footer-widget-left -->
-        <div class="footer-widget footer-widget-middle">
-            <h6>Мультфильм</h6>
-            <?php wpeFootNav(); ?>
-        </div><!-- footer-widget footer-widget-middle -->
-        <div class="footer-widget footer-widget-right">
-            <h6>Пони</h6>
-            <?php wpeFootNav(); ?>
-        </div><!-- footer-widget footer-widget-right -->
+  <div class="mainfooter">
+    <?php if ( is_active_sidebar( 'widgetarea1') ) : ?>
+    <?php dynamic_sidebar( 'widgetarea1' ); ?>
+    <?php else : ?>
+    <?php endif; ?>
+    <!-- footer-widget footer-widget-left -->
 
-        <!-- copyright -->
-        <p class="copyright">
-          &copy; <?php echo date("Y"); ?>
-           Собственность <?php bloginfo('name'); ?>.
-        </p>
-        <!-- /copyright -->
-    </div>
-    <!-- /.mainfooter -->
+    <?php if ( is_active_sidebar( 'widgetarea2') ) : ?>
+    <?php dynamic_sidebar( 'widgetarea2' ); ?>
+    <?php else : ?>
+    <?php endif; ?>
+    <!-- footer-widget footer-widget-middle -->
+
+    <?php if ( is_active_sidebar( 'widgetarea3') ) : ?>
+    <?php dynamic_sidebar( 'widgetarea3' ); ?>
+    <?php else : ?>
+    <?php endif; ?>
+    <!-- footer-widget footer-widget-right -->
+
+    <p class="copyright">&copy; <?php echo date("Y"); ?>Собственность <?php bloginfo( 'name'); ?>.</p>
+    <!-- /copyright -->
+  </div>
+  <!-- /.mainfooter -->
 </footer>
 <!-- /footer -->
 
 <div class="backhead bkblock0n">
-</div><!-- backhead bkblock0n -->
-  <?php wp_footer(); ?>
+</div>
+<!-- backhead bkblock0n -->
+<?php wp_footer(); ?>
 </body>
 </html>
 

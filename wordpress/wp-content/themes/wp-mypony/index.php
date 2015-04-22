@@ -1,57 +1,14 @@
 <?php get_header(); ?>
-    <div class="container inner">
-        <!-- section -->
-        <section role="main">
-            <h2 class="heading heading-pink heading-pony-pink"><span></span>Новые игры <a href="#">Все игры ›</a></h2>
-            <ul class="new-games-list-wad clearfix">
-                <li><a href=""><img src="" alt=""><span></span></a></li>
-                <li><a href=""><img src="" alt=""><span>Giddy Up Mix-Up</span></a></li>
-                <li><a href=""><img src="" alt=""><span>Restore the Elements of Magic</span></a></li>
-                <li><a href=""><img src="" alt=""><span>Hearts and Hooves Day Puzzles ...</span></a></li>
-            </ul>
-            <a href="#" class="butt butt-midle butt-violet">Все игры</a>
-            <!-- article -->
-            <article>
-                <h3>Игры пони Дружба это чудо</h3>
-                <p>Игры для девочек дружба это чудо сочетают в себе оригинальный сюжет и имеют потрясающую графику. Все действия игр происходят в сказочной стране Эквестрия. Эту страну населяют очень красивые, а главное – умные пони. Однако драконы, мантикоры и другие существа также являются неотъемлемой частью повседневной жизни страны. Только в этих играх вы можете почувствовать себя “существом фэнтези” в полном смысле этого слова.</p>
-                <p>Если говорить о погоде, то здесь она переменчива, однако, как и в любом вымышленном мире, здешние жители обладают некоторыми уникальными свойствами. К примеру, принцесса Селестия в ответе за луну и солнце (чтобы эти звёзды светили ярко и лучисто). Если мы говорим в игре о временах года, то сменяется оно разными способами: то ли в работу подключаются наши сказочные герои, или же за этим процессом кто-то может руководить.</p>
-            </article>
-            <!-- /article new-games-->
-            <h2 class="heading heading-pink heading-pony-pink-v2"><span></span>Новые серии <a href="#">Все серии ›</a></h2>
-            <ul class="clearfix new-series-video">
-                <li><iframe src="" frameborder="0"></iframe><a href="">name</a></li>
-                <li><iframe src="" frameborder="0"></iframe><a href="">name</a></li>
-                <li><iframe src="" frameborder="0"></iframe><a href="">name</a></li>
-            </ul><!-- clearfix new-series-video -->
-            <a href="#" class="butt butt-midle butt-pink">Все серии</a>
-            <article>
-                <h3>Новые серии Дружба это чудо</h3>
-                <p>Действие сериала «Дружба — это чудо» происходит в вымышленной стране под названием Эквестрия, населённой разумными пони и рядом других разумных и неразумных существ. Эквестрия находится в фэнтезийном мире, где, помимо обычных животных, обитают также драконы, грифоны, мантикоры и другие фантастические существа. Помимо Эквестрии, существуют и другие, дальние страны, где живут, к примеру, зебры.</p>
-                <p>4-й сезон знаменитого мультсериала My Little Pony: Friendship Is Magic ("Мой Маленький Пони: Дружба это Магия"). Серии с русским переводом.</p>
-            </article>
-            <div class="article-gallery">
-                <h5><span>Галерея</span></h5>
-                <ul class="clearfix gallery-list">
-                    <li><a href=""><img src="" alt=""></a></li>
-                    <li><a href=""><img src="" alt=""></a></li>
-                    <li><a href=""><img src="" alt=""></a></li>
-                    <li><a href=""><img src="" alt=""></a></li>
-                </ul><!-- gallery-list -->
-                <a href="#" class="butt butt-midle butt-orange">Все серии</a>
-            </div>
-            <!-- /.article-gallery -->
-            <article>
-                <h3>Дружба — это чудо</h3>
-                <p>Детский анимационный сериал Hasbro Studios и DHX Media, транслируемый на телеканале Discovery Family (бывший Hub Network). 10 мая 2014 в США закончился показ 4 сезона. В России премьера третьего сезона закончилась 27 декабря 2013. Сериал транслируется на международном уровне и во многих других странах (в общей сложности более чем на десяти языках). Целевая аудитория — дети от 4 до 7 лет[3].</p>
-                <p>Мультсериал создан под руководством Лорен Фауст, которая принесла в обновленный сериал большую глубину и приключенческий настрой, сделав его интересным для широкой аудитории.</p>
-                <p>Но после первого сезона она покинула должность креативного директора, уступив место Джейсону Тиссену.[4] Лорен Фауст также известна своим участием в таких проектах, как мультсериалы «Суперкрошки» и «Фостер: Дом для друзей из мира фантазий».</p>
-            </article>
-            <div class="teaser">
-                TEASER
-            </div>
-            <!-- /teaser -->
-        </section>
-        <!-- /section -->
-    </div>
-    <!-- /.container -->
+<div class="container inner">
+    <?php if (function_exists( 'dimox_breadcrumbs')) dimox_breadcrumbs(); ?>
+    <!-- section -->
+    <section role="main">
+        <h1 class="heading heading-category heading-pink"><?php _e( 'Latest Posts', 'wpeasy' ); ?></h1>
+        <?php get_template_part( 'loop'); ?>
+        <?php get_template_part( 'pagination'); ?>
+        <?php get_template_part( 'template-teaser'); ?>
+    </section>
+    <!-- /section -->
+</div>
+<!-- /.container -->
 <?php get_footer(); ?>

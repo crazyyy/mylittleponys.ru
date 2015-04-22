@@ -1,0 +1,2 @@
+[04/21/2015 1:11 PM] - FAILURE : Error inserting record into hpx3bi_aiowps_login_activity
+[04/21/2015 8:34 PM] - FAILURE : Error inserting record into hpx3bi_aiowps_login_activity

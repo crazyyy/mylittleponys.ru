@@ -217,9 +217,32 @@ function wpeFootNav() {
 }
 // WPE sidebar navigation
 function wpeSideNav() {
+    wp_nav_menu(
+    array(
+        'theme_location'  => 'sidebar-menu',
+        'menu'            => '',
+        'container'       => 'div',
+        'container_class' => 'menu-{menu slug}-container',
+        'container_id'    => '',
+        'menu_class'      => 'menu',
+        'menu_id'         => '',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_page_menu',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'items_wrap'      => '<ul class="sidebarnav">%3$s</ul>',
+        'depth'           => 0,
+        'walker'          => ''
+        )
+    );
+}
+// WPE sidebar navigation
+function wpeSideNav2() {
 	wp_nav_menu(
 	array(
-		'theme_location'  => 'sidebar-menu',
+		'theme_location'  => 'sidebar2-menu',
 		'menu'            => '',
 		'container'       => 'div',
 		'container_class' => 'menu-{menu slug}-container',
@@ -243,8 +266,9 @@ function wpeSideNav() {
 function register_html5_menu() {
     register_nav_menus(array(
         'header-menu' => __('Меню в шапке', 'wpeasy'),
-        'sidebar-menu' => __('Меню в сайдбар', 'wpeasy'),
-        'footer-menu' => __('Меню в подвал', 'wpeasy')
+        'sidebar-menu' => __('Доп меню №1', 'wpeasy'),
+        'sidebar2-menu' => __('Доп меню №2', 'wpeasy'),
+        'footer-menu' => __('Доп меню №3', 'wpeasy')
     ));
 }
 //  If Dynamic Sidebar Existsов
@@ -254,29 +278,32 @@ if (function_exists('register_sidebar')) {
     //  RU: Активация первого виджета
     register_sidebar(array(
         'name' => __('Блок виджетов #1', 'wpeasy'),
-        'description' => __('Description for this widget-area...', 'wpeasy'),
+        'description' => __('Виджеты в подвал слева', 'wpeasy'),
         'id' => 'widgetarea1',
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'before_widget' => '<div id="%1$s" class="footer-widget footer-widget-left %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h6>',
         'after_title' => '</h6>'
     ));
-    //  Define Sidebar Widget Area 2. If your want to display more widget - uncoment this
-    //  RU: Если вам нужен два и больше виджетов - раскоментируйте ниже и / или добавьте ещё, по примеру
-    /*
     register_sidebar(array(
         'name' => __('Блок виджетов #2', 'wpeasy'),
-        'description' => __('Description for this widget-area...', 'wpeasy'),
+        'description' => __('Виджеты в подвал по центру', 'wpeasy'),
         'id' => 'widgetarea2',
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'before_widget' => '<div id="%1$s" class="footer-widget footer-widget-middle %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h6>',
         'after_title' => '</h6>'
     ));
-    */
+    register_sidebar(array(
+        'name' => __('Блок виджетов #3', 'wpeasy'),
+        'description' => __('Виджеты в подвал справа', 'wpeasy'),
+        'id' => 'widgetarea3',
+        'before_widget' => '<div id="%1$s" class="footer-widget footer-widget-right %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h6>',
+        'after_title' => '</h6>'
+    ));
 }
-
-
 
 //  Custom Excerpts
 //  RU: Произвольное обрезание текста
@@ -578,7 +605,7 @@ function dimox_breadcrumbs() {
 	$show_on_home = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
 	$show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
 	$show_title = 1; // 1 - показывать подсказку (title) для ссылок, 0 - не показывать
-	$delimiter = ' &raquo; '; // разделить между "крошками"
+	$delimiter = ' › '; // разделить между "крошками"
 	$before = '<span class="current">'; // тег перед текущей "крошкой"
 	$after = '</span>'; // тег после текущей "крошки"
 	/* === КОНЕЦ ОПЦИЙ === */
@@ -797,4 +824,140 @@ function top_level_cats_remove_cat_base($link)
 	return preg_replace('|' . $category_base . '|', '', $link, 1);
 }
 
+/*
+  register custom post type
+*/
+add_action( 'init', 'register_cpt_pony' );
+function register_cpt_pony() {
+    $labels = array(
+        'name' => _x( 'Пони', 'pony' ),
+        'singular_name' => _x( 'Пони', 'pony' ),
+        'add_new' => _x( 'Добавить', 'pony' ),
+        'add_new_item' => _x( 'Добавить новую пони', 'pony' ),
+        'edit_item' => _x( 'Редактировать пони', 'pony' ),
+        'new_item' => _x( 'Новые пони', 'pony' ),
+        'view_item' => _x( 'Посмотреть поней', 'pony' ),
+        'search_items' => _x( 'Искать пони', 'pony' ),
+        'not_found' => _x( 'Пони не найдены', 'pony' ),
+        'not_found_in_trash' => _x( 'Даже в корзинке нету поней', 'pony' ),
+        'parent_item_colon' => _x( 'Родительская пони:', 'pony' ),
+        'menu_name' => _x( 'Пони', 'pony' ),
+    );
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+        'supports' => array( 'title', 'editor' ),
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 10,
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => true,
+        'exclude_from_search' => false,
+        'has_archive' => true,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => array(
+            'slug' => 'pony',
+            'with_front' => false,
+            'feeds' => true,
+            'pages' => true
+        ),
+        'capability_type' => 'post'
+    );
+    register_post_type( 'pony', $args );
+}
+
+/*
+  register custom post type
+*/
+add_action( 'init', 'register_cpt_pony_video' );
+function register_cpt_pony_video() {
+    $labels = array(
+        'name' => _x( 'Пони видео', 'pony-video' ),
+        'singular_name' => _x( 'Пони видео', 'pony-video' ),
+        'add_new' => _x( 'Добавить', 'pony-video' ),
+        'add_new_item' => _x( 'Добавить новое видео', 'pony-video' ),
+        'edit_item' => _x( 'Редактировать видео', 'pony-video' ),
+        'new_item' => _x( 'Новое видео', 'pony-video' ),
+        'view_item' => _x( 'Посмотреть видео', 'pony-video' ),
+        'search_items' => _x( 'Искать видео', 'pony-video' ),
+        'not_found' => _x( 'Видео не найдено', 'pony-video' ),
+        'not_found_in_trash' => _x( 'Даже в корзинке нету видео', 'pony-video' ),
+        'parent_item_colon' => _x( 'Родительское видео:', 'pony-video' ),
+        'menu_name' => _x( 'Пони видео', 'pony-video' ),
+    );
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+        'supports' => array( 'title', 'editor' ),
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 11,
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => true,
+        'exclude_from_search' => false,
+        'has_archive' => true,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => array(
+            'slug' => 'pony-video',
+            'with_front' => false,
+            'feeds' => true,
+            'pages' => true
+        ),
+        'capability_type' => 'post'
+    );
+    register_post_type( 'pony-video', $args );
+}
+/*
+  register custom post type
+*/
+add_action( 'init', 'register_cpt_pony_game' );
+function register_cpt_pony_game() {
+    $labels = array(
+        'name' => _x( 'Пони игры', 'pony-game' ),
+        'singular_name' => _x( 'Пони игры', 'pony-game' ),
+        'add_new' => _x( 'Добавить', 'pony-game' ),
+        'add_new_item' => _x( 'Добавить новую игру', 'pony-game' ),
+        'edit_item' => _x( 'Редактировать игру', 'pony-game' ),
+        'new_item' => _x( 'Новая игра', 'pony-game' ),
+        'view_item' => _x( 'Посмотреть игру', 'pony-game' ),
+        'search_items' => _x( 'Искать игру', 'pony-game' ),
+        'not_found' => _x( 'Игра не найдена', 'pony-game' ),
+        'not_found_in_trash' => _x( 'Даже в корзинке нету игр', 'pony-game' ),
+        'parent_item_colon' => _x( 'Родительская игра:', 'pony-game' ),
+        'menu_name' => _x( 'Пони игры', 'pony-game' ),
+    );
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+        'supports' => array( 'title', 'editor' ),
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 12,
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => true,
+        'exclude_from_search' => false,
+        'has_archive' => true,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => array(
+            'slug' => 'pony-game',
+            'with_front' => false,
+            'feeds' => true,
+            'pages' => true
+        ),
+        'capability_type' => 'post'
+    );
+    register_post_type( 'pony-game', $args );
+}
+/*
+  register custom post type
+*/
+  add_post_type_support( 'pony-game', 'thumbnail' );
+  add_post_type_support( 'pony-video', 'thumbnail' );
+  add_post_type_support( 'pony', 'thumbnail' );
 ?>
