@@ -36,14 +36,12 @@
             <?php wpeHeadNav(); ?>
         </nav>
         <!-- /nav -->
+
         <div class="slider clearfix">
             <div class="slider-container">
-                <h5>новые серии</h5>
-                <h6>5 сезон</h6>
-                <a href="#" class="butt butt-big butt-pink">Смотреть онлайн</a>
-                <img src="<?php echo get_template_directory_uri(); ?>/img/slider.jpg" alt="">
+                <?php putRevSlider("home") ?>
+                <div class="slider-nav"></div>
             </div>
-            <div class="slider-nav"></div>
         </div>
         <!-- /.slider -->
     </header>

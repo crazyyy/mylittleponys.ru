@@ -24,7 +24,7 @@
 
         <h3 class="heading heading-violet heading-pony-violet"><span></span>Похожие игры <a href="<?php echo home_url(); ?>/pony-game">Все игры></a></h3>
         <ul class="new-games-list-wad clearfix">
-          <li></li>
+          <li><?php the_field( 'adv-game', 'option'); ?></li>
           <?php
             $temp = $wp_query;
             $wp_query= null;

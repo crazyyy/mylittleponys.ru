@@ -29,7 +29,6 @@ function catchFirstImage() {
     $first_img = get_template_directory_uri() . '/img/noimage.jpg'; }
     return $first_img;
 }
-
 //  Disable auto save posts
 //  RU: Отключение автоматического сохранения записи
 //  http://wordpresso.org/hacks/29-wordpress-tryukov-dlya-rabotyi-s-zapisyami-i-stranitsami/
@@ -37,11 +36,6 @@ function disableAutoSave(){
     wp_deregister_script('autosave');
 }
 add_action( 'wp_print_scripts', 'disableAutoSave' );
-
-/*------------------------------------*\
-    External Modules/Files
-    RU: Подключение внешних модулей/файлов
-\*------------------------------------*/
 //  Load styles
 //  RU: Подключение стилей
 function wpeStyles()    {
@@ -66,27 +60,10 @@ function wpeHeaderScripts()
         wp_register_script('modernizr', 'http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js', array(), '2.6.2', true); // Modernizr
         wp_enqueue_script('modernizr'); // Enqueue it!
 
-        wp_register_script('wpeScripts', get_template_directory_uri() . '/js/scripts.js', array(), '1.0.0', true); // Custom scripts
+        wp_register_script('wpeScripts', get_template_directory_uri() . '/js/scripts.min.js', array(), '1.0.0', true); // Custom scripts
         wp_enqueue_script('wpeScripts'); // Enqueue it!
     }
 }
-
-//  Load conditional scripts
-//  RU: Пример подключения стороннего шрифта дял специфической страницы
-/*
-function wpeConditionalScripts()    {
-    if (is_page('pagenamehere')) {
-        wp_register_script('scriptname', get_template_directory_uri() . '/js/scriptname.js', array('jquery'), '1.0.0'); // Conditional script(s)
-        wp_enqueue_script('scriptname'); // Enqueue it!
-    }
-}
-add_action('wp_print_scripts', 'wpeConditionalScripts'); // Add Conditional Page Scripts
-*/
-
-/*------------------------------------*\
-	Theme Cleanup
-    RU: Отключение всякого лишнего
-\*------------------------------------*/
 //  Remove wp_head() injected Recent Comment styles
 //  RU: отключение вывод стилей комментарие в шапке
 function my_remove_recent_comments_style() {
@@ -97,26 +74,9 @@ function my_remove_recent_comments_style() {
     ));
 }
 
-
-
-// Load any external files you have here
-
-/*------------------------------------*\
-    Theme Support
-\*------------------------------------*/
-
-
-
-
-
-
-
-
-
-
 if (!isset($content_width))
 {
-    $content_width = 900;
+    $content_width = 920;
 }
 
 if (function_exists('add_theme_support'))
@@ -130,30 +90,6 @@ if (function_exists('add_theme_support'))
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
     add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
-
-    // Add Support for Custom Backgrounds - Uncomment below if you're going to use
-    //  RU: Добавление поддержки темой собственного фона - цвета или зображения. Раскоментируйте, что бы работало
-    // http://wp-kama.ru/function/add_theme_support#h3_3
-    /*
-    add_theme_support('custom-background', array(
-	'default-color' => 'ccc',
-	'default-image' => get_template_directory_uri() . '/img/bg.jpg'
-    ));
-    */
-
-    // Add Support for Custom Header - Uncomment below if you're going to use
-    /*add_theme_support('custom-header', array(
-	'default-image'			=> get_template_directory_uri() . '/img/headers/default.jpg',
-	'header-text'			=> false,
-	'default-text-color'		=> '000',
-	'width'				=> 1000,
-	'height'			=> 198,
-	'random-default'		=> false,
-	'wp-head-callback'		=> $wphead_cb,
-	'admin-head-callback'		=> $adminhead_cb,
-	'admin-preview-callback'	=> $adminpreview_cb
-    ));*/
-
     // Enables post and comment RSS feed links to head
     add_theme_support('automatic-feed-links');
 
@@ -340,32 +276,22 @@ function html5_blank_view_article($more)
     return '... <!-- noindex --><a rel="nofollow" class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'wpeasy') . '</a><!-- /noindex -->';
 }
 
-
-
-
-
-
-
-
 // Remove the <div> surrounding the dynamic navigation to cleanup markup
 function my_wp_nav_menu_args($args = '')
 {
     $args['container'] = false;
     return $args;
 }
-
 // Remove Injected classes, ID's and Page ID's from Navigation <li> items
 function my_css_attributes_filter($var)
 {
     return is_array($var) ? array() : '';
 }
-
 // Remove invalid rel attribute values in the categorylist
 function remove_category_rel_from_category_list($thelist)
 {
     return str_replace('rel="category tag"', 'rel="tag"', $thelist);
 }
-
 // Add page slug to body class, love this - Credit: Starkers Wordpress Theme
 function add_slug_to_body_class($classes)
 {
@@ -383,8 +309,6 @@ function add_slug_to_body_class($classes)
 
     return $classes;
 }
-
-
 // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
 function html5wp_pagination()
 {
@@ -397,21 +321,16 @@ function html5wp_pagination()
         'total' => $wp_query->max_num_pages
     ));
 }
-
-
-
 // Remove Admin bar
 function remove_admin_bar()
 {
     return false;
 }
-
 // Remove 'text/css' from our enqueued stylesheet
 function html5_style_remove($tag)
 {
     return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
 }
-
 // Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
 function remove_thumbnail_dimensions( $html )
 {
@@ -488,9 +407,6 @@ function html5blankcomments($comment, $args, $depth)
 // Add Actions
 add_action('init', 'wpeHeaderScripts'); // Add Scripts to wp_head
 add_action('wp_enqueue_scripts', 'wpeStyles'); // Add Theme Stylesheet
-
-
-
 
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 
@@ -846,7 +762,7 @@ function register_cpt_pony() {
     $args = array(
         'labels' => $labels,
         'hierarchical' => true,
-        'supports' => array( 'title', 'editor' ),
+        'supports' => array( 'title', 'editor' , 'thumbnail'),
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
@@ -854,6 +770,7 @@ function register_cpt_pony() {
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
+        'taxonomies' => array('category'),
         'has_archive' => true,
         'query_var' => true,
         'can_export' => true,
@@ -875,7 +792,7 @@ add_action( 'init', 'register_cpt_pony_video' );
 function register_cpt_pony_video() {
     $labels = array(
         'name' => _x( 'Пони видео', 'pony-video' ),
-        'singular_name' => _x( 'Пони видео', 'pony-video' ),
+        'singular_name' => _x( 'Мультфильмы', 'pony-video' ),
         'add_new' => _x( 'Добавить', 'pony-video' ),
         'add_new_item' => _x( 'Добавить новое видео', 'pony-video' ),
         'edit_item' => _x( 'Редактировать видео', 'pony-video' ),
@@ -890,7 +807,7 @@ function register_cpt_pony_video() {
     $args = array(
         'labels' => $labels,
         'hierarchical' => true,
-        'supports' => array( 'title', 'editor' ),
+        'supports' => array( 'title', 'editor' , 'thumbnail'),
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
@@ -898,6 +815,7 @@ function register_cpt_pony_video() {
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
+        'taxonomies' => array('category'),
         'has_archive' => true,
         'query_var' => true,
         'can_export' => true,
@@ -918,7 +836,7 @@ add_action( 'init', 'register_cpt_pony_game' );
 function register_cpt_pony_game() {
     $labels = array(
         'name' => _x( 'Пони игры', 'pony-game' ),
-        'singular_name' => _x( 'Пони игры', 'pony-game' ),
+        'singular_name' => _x( 'Игры', 'pony-game' ),
         'add_new' => _x( 'Добавить', 'pony-game' ),
         'add_new_item' => _x( 'Добавить новую игру', 'pony-game' ),
         'edit_item' => _x( 'Редактировать игру', 'pony-game' ),
@@ -933,7 +851,7 @@ function register_cpt_pony_game() {
     $args = array(
         'labels' => $labels,
         'hierarchical' => true,
-        'supports' => array( 'title', 'editor' ),
+        'supports' => array( 'title', 'editor', 'thumbnail' ),
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
@@ -941,6 +859,7 @@ function register_cpt_pony_game() {
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
+        'taxonomies' => array('category'),
         'has_archive' => true,
         'query_var' => true,
         'can_export' => true,
@@ -957,7 +876,5 @@ function register_cpt_pony_game() {
 /*
   register custom post type
 */
-  add_post_type_support( 'pony-game', 'thumbnail' );
-  add_post_type_support( 'pony-video', 'thumbnail' );
-  add_post_type_support( 'pony', 'thumbnail' );
+
 ?>
