@@ -4,8 +4,7 @@
         <section role="main">
             <h2 class="heading heading-pink heading-pony-pink"><span></span>Новые игры <a href="<?php echo home_url(); ?>/pony-game">Все игры ›</a></h2>
             <ul class="new-games-list-wad clearfix">
-                <li><?php the_field( 'adv-game', 'option'); ?></li>
-
+              <li><?php the_field( 'adv-game', 'option'); ?></li>
               <?php
                 $args = array(
                   'post_type' => 'pony-game',
@@ -17,7 +16,6 @@
                 <?php get_template_part( 'loop-similar-games'); ?>
               <?php endwhile; endif; ?>
               <?php wp_reset_query(); ?>
-
             </ul>
             <a href="<?php echo home_url(); ?>/pony-game" class="butt butt-midle butt-violet">Все игры</a>
             <!-- article -->

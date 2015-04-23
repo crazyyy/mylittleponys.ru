@@ -18,19 +18,21 @@
             <?php the_content(); ?>
         </article>
         <!-- /article -->
-        <h3 class="heading heading-violet heading-pony-violet"><span></span>Похожее видео
+        <h3 class="heading heading-enable heading-violet heading-pony-violet"><span></span>Похожее видео
             	<a href="<?php echo home_url(); ?>/pony-video">Всё видео></a>
             </h3>
         <ul class="clearfix new-series-video">
           <?php
-            $temp = $wp_query;
-            $wp_query= null;
-            query_posts('post_type=pony-game'.'&showposts=3');
-            while (have_posts()) : the_post();
+            $args = array(
+              'post_type' => 'pony-video',
+              'posts_per_page' => 3,
+              );
+            query_posts($args);
           ?>
+          <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             <?php get_template_part( 'loop-new-series'); ?>
-          <?php endwhile; ?>
-          <?php $wp_query = null; $wp_query = $temp;?>
+          <?php endwhile; endif; ?>
+          <?php wp_reset_query(); ?>
         </ul>
         <!-- other-pony-list -->
       <?php get_template_part( 'template-comments'); ?>

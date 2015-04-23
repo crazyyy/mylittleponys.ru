@@ -20,19 +20,21 @@
 
         <?php endif; ?>
 
-        <h3 class="heading heading-violet heading-pony-violet"><span></span>Другие пони
+        <h3 class="heading heading-enable heading-violet heading-pony-violet"><span></span>Другие пони
           	<a href="<?php echo home_url(); ?>/pony">Все пони></a>
           </h3>
         <ul class="clearfix other-pony-list">
-          <?php
-            $temp = $wp_query;
-            $wp_query= null;
-            query_posts('post_type=pony'.'&showposts=4');
-            while (have_posts()) : the_post();
-          ?>
-            <?php get_template_part( 'loop-pony-list'); ?>
-          <?php endwhile; ?>
-          <?php $wp_query = null; $wp_query = $temp;?>
+        <?php
+          $args = array(
+            'post_type' => 'pony',
+            'posts_per_page' => 4,
+            );
+          query_posts($args);
+        ?>
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+          <?php get_template_part( 'loop-pony-list'); ?>
+        <?php endwhile; endif; ?>
+        <?php wp_reset_query(); ?>
         </ul>
         <!-- other-pony-list -->
         <?php get_template_part( 'template-comments'); ?>
