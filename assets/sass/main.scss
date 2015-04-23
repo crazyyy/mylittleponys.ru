@@ -22,9 +22,7 @@ body {
 
   color: $color;
   background-color: #dbc5f9;
-  background-image: url(../img/bg/body.jpg);
-  background-repeat: no-repeat;
-  background-position: center -300px;
+
 }
 
 a {
@@ -287,6 +285,7 @@ body.home {
         z-index: 100;
         bottom: -20px;
         left: 0;
+
         width: 100%;
         height: 32px;
 
@@ -305,22 +304,25 @@ body.home {
     bottom: -12px !important;
   }
   .tparrows {
-    margin-top: 140px !important;
     position: relative;
     z-index: 101;
+    top: 200px !important;
+
     width: 16px;
     height: 24px;
-    top: 200px !important;
+    margin-top: 140px !important;
     div {
       display: none;
     }
   }
   .tp-leftarrow {
     left: 425px !important;
+
     @include sprite($sprite-slider-nav-left);
   }
   .tp-rightarrow {
     right: 425px !important;
+
     @include sprite($sprite-slider-nav-right);
   }
 }
@@ -347,9 +349,19 @@ body.page {
   position: absolute;
   top: 0;
 
-  height: 170px;
-}
+  height: 315px;
 
+  background-color: #d0247a;
+  background-image: url(../img/bg/body.jpg);
+  background-repeat: no-repeat;
+  background-position: center -300px;
+}
+body.home {
+  .bkblock0n {
+    height: 613px;
+    background-position: center top;
+  }
+}
 .container {
   width: $width;
   margin-top: -11px;
@@ -1107,8 +1119,12 @@ section {
         width: 220px;
         height: 130px;
         margin: 0;
+        overflow: hidden;
 
         border: 5px solid #f4eb7e;
+        img {
+          width: 100%;
+        }
       }
       &:hover {
         a {
